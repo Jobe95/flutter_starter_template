@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jobe_template/presentation/widgets/widgets.dart';
 
-import '../../presentation/pages/pages.dart';
+import '../presentation/pages/pages.dart';
 import 'my_nav_obs.dart';
 
 final router = GoRouter(
@@ -30,19 +30,25 @@ final router = GoRouter(
           },
           routes: <RouteBase>[
             GoRoute(
-              name: 'feed',
-              path: 'feed',
-              pageBuilder: (context, state) => CustomTransitionPage(
-                key: state.pageKey,
-                child: const FeedPage(),
-                transitionsBuilder: (context, anim1, anim2, child) =>
-                    FadeTransition(
-                  opacity:
-                      CurveTween(curve: Curves.easeInOutCirc).animate(anim1),
-                  child: child,
-                ),
-              ),
-            ),
+                name: 'feed',
+                path: 'feed',
+                pageBuilder: (context, state) => CustomTransitionPage(
+                      key: state.pageKey,
+                      child: const FeedPage(),
+                      transitionsBuilder: (context, anim1, anim2, child) =>
+                          FadeTransition(
+                        opacity: CurveTween(curve: Curves.easeInOutCirc)
+                            .animate(anim1),
+                        child: child,
+                      ),
+                    ),
+                routes: [
+                  GoRoute(
+                    name: 'feed-item',
+                    path: 'item',
+                    builder: (context, state) => const FeedDetailPage(),
+                  ),
+                ]),
             GoRoute(
               name: 'discover',
               path: 'discover',
