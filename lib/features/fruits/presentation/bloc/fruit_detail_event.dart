@@ -8,9 +8,16 @@ abstract class FruitDetailEvent extends Equatable {
 }
 
 class GetFruitByName extends FruitDetailEvent {
+  const GetFruitByName(this.name);
   final String name;
 
-  const GetFruitByName(this.name);
+  @override
+  List<Object> get props => [name];
+}
+
+class SearchFruitByName extends FruitDetailEvent {
+  const SearchFruitByName(this.name);
+  final String name;
 
   @override
   List<Object> get props => [name];

@@ -11,7 +11,9 @@ class GetFruitByNameUseCase implements UseCase<Fruit, FruitByNameParam> {
   @override
   Future<Either<Failure, Fruit>> call(FruitByNameParam params) async {
     if (params.name.isEmpty) {
-      return Left(ValidationFailure(message: 'Namn kan inte vara tomt'));
+      return Left(
+        ValidationFailure(message: 'Namn kan inte vara tomt', code: 204),
+      );
     }
     return await repository.getByName(params.name);
   }

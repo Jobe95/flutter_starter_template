@@ -4,6 +4,8 @@ import 'package:jobe_template/core/usecases/usecases.dart';
 import 'package:jobe_template/features/fruits/data/models/models.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../../core/constants/constants.dart';
+
 abstract class FruitRemoteDataSource {
   Future<List<FruitModel>> getAllFruits();
   Future<FruitModel> getByName(String name);
@@ -11,14 +13,13 @@ abstract class FruitRemoteDataSource {
 
 class FruitRemoteDataSourceImpl implements FruitRemoteDataSource {
   final http.Client client;
-  final baseUrl = 'https://fruityvice.com/api';
 
   FruitRemoteDataSourceImpl({required this.client});
 
   @override
   Future<List<FruitModel>> getAllFruits() async {
     final response =
-        await client.get(Uri.parse('$baseUrl/fruit/all'), headers: {
+        await client.get(Uri.parse('$kFruitBaseUrl/fruit/all'), headers: {
       'Content-Type': 'application/json',
     });
 
@@ -34,7 +35,7 @@ class FruitRemoteDataSourceImpl implements FruitRemoteDataSource {
   @override
   Future<FruitModel> getByName(String name) async {
     final response =
-        await client.get(Uri.parse('$baseUrl/fruit/$name'), headers: {
+        await client.get(Uri.parse('$kFruitBaseUrl/fruit/$name'), headers: {
       'Content-Type': 'application/json',
     });
 

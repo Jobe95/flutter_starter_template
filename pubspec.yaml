@@ -17,6 +17,8 @@ dependencies:
   url_launcher: ^6.1.10
   equatable: ^2.0.5
   http: ^0.13.5
+  stream_transform: ^2.1.0
+  rxdart: ^0.27.7
 
 dev_dependencies:
   flutter_test:

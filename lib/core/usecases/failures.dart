@@ -14,5 +14,6 @@ class CacheFailure extends Failure {
 }
 
 class ValidationFailure extends Failure {
-  ValidationFailure({required super.message});
+  final int? code;
+  ValidationFailure({required super.message, this.code});
 }
